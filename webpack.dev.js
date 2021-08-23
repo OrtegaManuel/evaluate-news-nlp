@@ -12,6 +12,11 @@ module.exports = {
     libraryTarget: 'var',
     library: 'Client',
   },
+  devServer: {
+    liveReload: true,
+    hot: false,
+    watchFiles: ['src'],
+  },
   module: {
     rules: [
       {
