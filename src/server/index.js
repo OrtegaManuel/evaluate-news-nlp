@@ -1,6 +1,7 @@
 const dotenv = require('dotenv');
 dotenv.config();
 const path = require('path');
+const fetch = require('node-fetch');
 const apiKey = process.env.API_KEY;
 
 // console.log(`Your API key is ${process.env.API_KEY}`);
