@@ -14,15 +14,17 @@
     <main>
         <section>
             <form class="" onsubmit="return Client.handleSubmit(event)">
-              <label for="userInput">Enter an english sentence</label>
-                <input id="userInput" type="text" name="input" value="" placeholder="Enter your text here">
+              <label for="userInput">Enter an URL</label>
+                <input id="userInput" type="text" name="input" value="" placeholder="https://www.example.com">
                 <input type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return handleSubmit(event)">
             </form>
         <section>
 
       <section>
         <strong>Form Results:</strong>
-        <div id="results"></div>
+        <div id="irony"></div>
+        <div id="confidence"></div>
+        <div id="agreement"></div>
       </section>
     </main>
 

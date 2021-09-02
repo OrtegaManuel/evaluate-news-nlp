@@ -41,22 +41,25 @@ app.listen(8081, function () {
 });
 
 app.post('/api', async function (req, res) {
-  const userText = req.body.userText;
-  ///////
-  const data = await getApiURL(apiKey, userText);
+  const userInput = req.body.userInput;
+
+  const data = await getApiURL(apiKey, userInput);
   res.json(data);
 });
 
-async function getApiURL(apiKey, userText) {
-  const apiURL = `https://api.meaningcloud.com/sentiment-2.1?key=${apiKey}&of=json&txt=${userText}&lang=en`;
-
+async function getApiURL(apiKey, userInput) {
+  const apiURL = `https://api.meaningcloud.com/sentiment-2.1?key=${apiKey}&of=json&url=${userInput}&lang=auto`;
+  console.log('################# CALLING API #################');
+  console.log(apiURL);
+  console.log(' ');
   try {
     const res = await fetch(apiURL);
     const data = await res.json();
-    console.log(data.sentence_list[0].agreement);
 
     return {
-      agreement: data.sentence_list[0].agreement,
+      irony: data.irony,
+      confidence: data.confidence,
+      agreement: data.agreement,
     };
   } catch (err) {
     console.log('Error:', err);
