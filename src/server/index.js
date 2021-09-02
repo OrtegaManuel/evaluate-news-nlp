@@ -3,6 +3,7 @@ dotenv.config();
 const path = require('path');
 const fetch = require('node-fetch');
 const apiKey = process.env.API_KEY;
+const baseURL = 'https://api.meaningcloud.com/sentiment-2.1';
 // const inputURL = document.getElementById('url').value;
 
 console.log(`Your API key is ${process.env.API_KEY}`);
@@ -48,7 +49,7 @@ app.post('/api', async function (req, res) {
 });
 
 async function getApiURL(apiKey, userInput) {
-  const apiURL = `https://api.meaningcloud.com/sentiment-2.1?key=${apiKey}&of=json&url=${userInput}&lang=auto`;
+  const apiURL = `${baseURL}?key=${apiKey}&of=json&url=${userInput}&lang=auto`;
   console.log('################# CALLING API #################');
   console.log(apiURL);
   console.log(' ');
