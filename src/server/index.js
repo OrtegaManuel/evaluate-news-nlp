@@ -50,11 +50,15 @@ app.post('/api', async function (req, res) {
 async function getApiURL(apiKey, userText) {
   const apiURL = `https://api.meaningcloud.com/sentiment-2.1?key=${apiKey}&of=json&txt=${userText}&lang=en`;
 
-  const res = await fetch(apiURL);
-  const data = await res.json();
-  console.log(data.sentence_list[0].agreement);
+  try {
+    const res = await fetch(apiURL);
+    const data = await res.json();
+    console.log(data.sentence_list[0].agreement);
 
-  return {
-    agreement: data.sentence_list[0].agreement,
-  };
+    return {
+      agreement: data.sentence_list[0].agreement,
+    };
+  } catch (err) {
+    console.log('Error:', err);
+  }
 }
