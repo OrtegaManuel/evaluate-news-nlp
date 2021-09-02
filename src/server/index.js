@@ -3,8 +3,9 @@ dotenv.config();
 const path = require('path');
 const fetch = require('node-fetch');
 const apiKey = process.env.API_KEY;
+// const inputURL = document.getElementById('url').value;
 
-// console.log(`Your API key is ${process.env.API_KEY}`);
+console.log(`Your API key is ${process.env.API_KEY}`);
 
 // Require Express to run server and routes
 const express = require('express');
@@ -39,6 +40,21 @@ app.listen(8081, function () {
   console.log('Example app listening on port 8081!');
 });
 
-app.get('/test', function (req, res) {
-  res.send(mockAPIResponse);
+app.post('/api', async function (req, res) {
+  const userText = req.body.userText;
+  ///////
+  const data = await getApiURL(apiKey, userText);
+  res.json(data);
 });
+
+async function getApiURL(apiKey, userText) {
+  const apiURL = `https://api.meaningcloud.com/sentiment-2.1?key=${apiKey}&of=json&txt=${userText}&lang=en`;
+
+  const res = await fetch(apiURL);
+  const data = await res.json();
+  console.log(data.sentence_list[0].agreement);
+
+  return {
+    agreement: data.sentence_list[0].agreement,
+  };
+}
