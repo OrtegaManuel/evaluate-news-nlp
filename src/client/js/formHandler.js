@@ -1,17 +1,17 @@
 function handleSubmit(event) {
   event.preventDefault();
 
-  // check what text was put into the form field
+  // check what url was put into the form field
   let formText = document.getElementById('userInput').value;
 
   if (!formText) {
-    alert('Please enter a text');
+    alert('Please enter a valid URL');
   } else {
     console.log('::: Form Submitted :::');
 
     fetch('http://localhost:8081/api', {
       method: 'POST',
-      credentials: 'omit',
+      credentials: 'same-origin',
       cache: 'no-cache',
       mode: 'cors',
       headers: {
@@ -23,11 +23,11 @@ function handleSubmit(event) {
       .then((res) => res.json())
       .then(function (res) {
         document.getElementById('irony').innerHTML =
-          'The irony is: ' + res.irony;
+          'The irony is: ' + res.irony.toLowerCase();
         document.getElementById('confidence').innerHTML =
           'The confidence score is: ' + res.confidence;
         document.getElementById('agreement').innerHTML =
-          'The agreement is: ' + res.agreement;
+          'The agreement is: ' + res.agreement.toLowerCase();
       });
   }
 }

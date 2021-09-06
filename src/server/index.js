@@ -44,11 +44,12 @@ app.listen(8081, function () {
 app.post('/api', async function (req, res) {
   const userInput = req.body.userInput;
 
-  const data = await getApiURL(apiKey, userInput);
+  const data = await getApiURL(baseURL, apiKey, userInput);
   res.json(data);
 });
 
-async function getApiURL(apiKey, userInput) {
+// Function to GET API data
+async function getApiURL(baseURL, apiKey, userInput) {
   const apiURL = `${baseURL}?key=${apiKey}&of=json&url=${userInput}&lang=auto`;
   console.log('################# CALLING API #################');
   console.log(apiURL);
