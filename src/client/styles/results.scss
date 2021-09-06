@@ -1,0 +1,29 @@
+.results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #efefef;
+  border: 1px solid #545454;
+  border-radius: 3px;
+  padding: 0 40px;
+
+  #form--headline {
+    font-size: 1.5rem;
+    margin: 10px 0 10px 0;
+  }
+
+  #irony {
+    margin: 10px 0 5px 0;
+    font-size: 1.2rem;
+  }
+
+  #confidence {
+    margin: 5px 0 5px 0;
+    font-size: 1.2rem;
+  }
+
+  #agreement {
+    margin: 5px 0 10px 0;
+    font-size: 1.2rem;
+  }
+}

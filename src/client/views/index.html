@@ -8,20 +8,20 @@
   <body>
     <header>
       <div class=""> Logo </div>
-      <div class=""> navigation </div>
+      <div class=""> Navigation </div>
     </header>
 
     <main>
         <section>
             <form class="" onsubmit="return Client.handleSubmit(event)">
               <label for="userInput">Enter an URL</label>
-                <input id="userInput" type="text" name="input" value="" placeholder="https://www.example.com">
+                <input id="userInput" type="text" name="input" value="" placeholder="https://www.example.com" >
                 <input type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return handleSubmit(event)">
             </form>
         <section>
 
-      <section>
-        <strong>Form Results:</strong>
+      <section class='results'>
+        <div id="form--headline"><strong>Form Results:</strong></div>
         <div id="irony"></div>
         <div id="confidence"></div>
         <div id="agreement"></div>
